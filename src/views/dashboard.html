@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= htmlWebpackPlugin.options.title %> | Snapswift</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    a {
+      text-decoration: none !important;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    body {
+      font-family: 'Signika', sans-serif !important;
+    }
+
+    .wrapper {
+      display: flex;
+      background-color: #fafafa;
+    }
+
+    .content {
+      margin-left: 260px;
+      min-height: 100vh;
+      flex: 1;
+      overflow: hidden;
+      transition: margin-left .25s ease-in-out;
+      background-color: #fafafa;
+    }
+
+    #sidebar {
+      height: 100vh;
+      width: 230px;
+      min-width: 70px;
+      z-index: 1000;
+      transition: width .25s ease-in-out;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #sidebar.collapse {
+      width: 70px;
+      min-width: 70px;
+    }
+
+    #sidebar.collapse~.content {
+      margin-left: 70px;
+    }
+
+    .toggle-btn {
+      background-color: transparent;
+      cursor: pointer;
+      border: 0;
+      padding: 1rem 1rem 1rem 1.5rem;
+    }
+
+    .toggle-btn i {
+      font-size: 1.5rem;
+      color: #ffc0cb;
+    }
+
+    .sidebar-logo {
+      margin: auto 0;
+      transition: opacity 0.3s ease, height 0.3s ease;
+    }
+
+    .sidebar-logo a {
+      color: #ffc0cb;
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .sidebar-logo a:hover {
+      color: #ffc0cb;
+    }
+
+    #sidebar.collapse .sidebar-logo,
+    #sidebar.collapse .sidebar-link span {
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s ease, height 0.3s ease;
+    }
+
+    .sidebar-nav {
+      padding: 2rem 0;
+      flex: 1 1 auto;
+    }
+
+    .sidebar-item {
+      position: relative;
+    }
+
+    a.sidebar-link {
+      padding: 0.8rem 1rem;
+      margin: 0.5rem;
+      color: #000;
+      display: block;
+      font-size: 1rem;
+      white-space: nowrap;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-link i {
+      font-size: 1.1rem;
+      margin-right: .75rem;
+    }
+
+    a.sidebar-link:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      color: #000;
+      border-radius: 10px;
+    }
+
+    #sidebar.collapse .sidebar-item .sidebar-dropdown {
+      position: absolute;
+      top: 0;
+      left: 70px;
+      background-color: #fff;
+      padding: 0;
+      min-width: 15rem;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: opacity 0.3s ease, height 0.3s ease;
+    }
+
+    #sidebar.collapse .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+      display: block;
+      max-height: 15em;
+      width: 100%;
+      opacity: 1;
+      transition: opacity 0.3s ease, width 0.3s ease;
+    }
+
+    .navbar-brand {
+      display: none;
+    }
+
+    .search i {
+      font-size: 18px;
+      color: #777;
+    }
+
+    .search input {
+      width: 300px;
+      flex: 1;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      padding: 2.5px 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .navbar-brand {
+        display: block;
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      #sidebar {
+        width: 70px;
+      }
+
+      #sidebar.collapse~.content {
+        margin-left: 70px;
+      }
+
+      .content {
+        margin-left: 70px;
+      }
+
+      .toggle-btn {
+        pointer-events: none;
+        color: gray;
+        text-decoration: none;
+        cursor: default;
+      }
+
+      #sidebar .sidebar-logo,
+      #sidebar a.sidebar-link span {
+        display: none;
+      }
+
+      .navbar-brand {
+        display: block;
+      }
+
+      .search input {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <aside id="sidebar">
+      <div class="d-flex pt-3">
+        <button class="toggle-btn" type="button">
+          <i class="bi bi-hearts"></i>
+        </button>
+        <div class="sidebar-logo">
+          <a href="#">Snapswift</a>
+        </div>
+      </div>
+      <ul class="sidebar-nav">
+        <li class="sidebar-item">
+          <a href="#home" class="sidebar-link">
+            <i class="bi bi-house-door-fill"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#disco" class="sidebar-link">
+            <i class="bi bi-compass"></i>
+            <span>Discover</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+          <a href="#" class="sidebar-link">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="bi bi-gear"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a href="#" class="sidebar-link">
+              <i class="bi bi-question-square"></i>
+              <span>Help/FAQ</span>
+            </a>
+          </li>
+        </ul>
+        <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+          <i class="bi bi-grid-fill"></i>
+          <span>More</span>
+        </a>
+      </div>
+    </aside>
+    <div class="content">
+      <header class="header" id="header">
+        <div class="navbar-wrapper">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid my-4 mx-3">
+              <a class="navbar-brand">Snapswift</a>
+              <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav me-auto mb-lg-0">
+                  <li class="nav-item mb-3">
+                    <form class="d-flex">
+                      <div class="rounded-pill bg-white p-1 px-3 shadow me-5 search">
+                        <i class="bi bi-search"></i>
+                        <input class="me-5" type="text" placeholder="Search">
+                      </div>
+                    </form>
+                  </li>
+                  <li class="nav-item mb-3">
+                    <a class="btn btn-dark rounded-pill shadow" href="#" role="button">Create story</a>
+                  </li>
+                </ul>
+                <li class="nav-item dropdown me-5 mb-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Nugrahanto
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Your Activity</a></li>
+                    <li><a class="dropdown-item" href="#">Switch Account</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Log out</a></li>
+                  </ul>
+                </li>
+              </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <main class="main" id="main">
+        <div class="container">
+          <div class="main-content">
+            <div class="row">
+              <div class="col-lg-8 col-md-12 col-sm-12 px-3">
+                <p>New Post</p>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
+                    <div class="container pl-5 pr-5">
+                      <div class="card">
+                        <img src="https://source.unsplash.com/1200x700/?nature" class="card-img-top" alt="Nature Image">
+                        <div class="card-body">
+                          <h5 class="card-title">Faisal Sulaiman</h5>
+                          <p class="card-text lh-sm fw-light">In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque.</p>
+                          <p class="card-text"><small class="text-muted">Created at: 2022-01-08 06:34:18</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
+                    <div class="container pl-5 pr-5">
+                      <div class="card">
+                        <img src="https://source.unsplash.com/1200x700/?tennis" class="card-img-top" alt="Nature Image">
+                        <div class="card-body">
+                          <h5 class="card-title">Alya Jamaluddin</h5>
+                          <p class="card-text lh-sm fw-light">In a pretium sem. Suspendisse eget sollicitudin enim, sed suscipit mi. Integer sagittis lorem urna, tincidunt viverra lectus gravida id. Praesent venenatis nibh ac nisi.</p>
+                          <p class="card-text"><small class="text-muted">Created at: 022-01-08 06:34:18</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 px-3">
+                <p>About Snapswift</p>
+                <p class="text-muted" style="text-align: justify;"><small>
+                  Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.</small>
+                </p>
+                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+                <p>© 2024 Snapswift - Nugrahanto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const hamBurger = document.querySelector(".toggle-btn");
+
+    hamBurger.addEventListener("click", function () {
+      document.querySelector("#sidebar").classList.toggle("collapse");
+    });
+  </script>
+</body>
+</html>
