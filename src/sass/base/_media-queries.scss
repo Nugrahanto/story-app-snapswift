@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as var;
+
+@media screen and (max-width: 768px) {
+  .navbar-brand {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #sidebar {
+    width: var.$sidebar-collapse-width;
+  }
+
+  #sidebar.collapse~.content {
+    margin-left: var.$sidebar-collapse-width;
+  }
+
+  .content {
+    margin-left: var.$sidebar-collapse-width;
+  }
+
+  .toggle-btn {
+    pointer-events: none;
+    color: var.$navbar-toggle-color;
+    text-decoration: none;
+    cursor: default;
+  }
+
+  #sidebar .sidebar-logo,
+  #sidebar a.sidebar-link span {
+    display: none;
+  }
+
+  .navbar-brand {
+    display: block !important;
+  }
+
+  .search input {
+    width: 140px;
+  }
+}

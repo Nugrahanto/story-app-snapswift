@@ -1,0 +1,19 @@
+@use '../abstracts/variables' as var;
+
+.navbar-brand {
+  display: none;
+}
+
+.search i {
+  font-size: 18px;
+  color: #777;
+}
+
+.search input {
+  width: 300px;
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: var.$font-size;
+  padding: 2.5px 10px;
+}

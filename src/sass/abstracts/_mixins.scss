@@ -1,0 +1,13 @@
+@use '../abstracts/variables' as var;
+
+@mixin transition($property) {
+  transition: $property var.$transition-duration ease-in-out;
+}
+
+@mixin multi-transition($properties...) {
+  transition: join($properties, ", ") var.$transition-duration ease;
+}
+
+@mixin boxShadow($x, $y, $blur, $color: var.$shadow-background) {
+  box-shadow: $x $y $blur $color;
+}

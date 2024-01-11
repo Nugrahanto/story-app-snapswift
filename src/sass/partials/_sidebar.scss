@@ -1,0 +1,94 @@
+@use '../abstracts/index' as *;
+
+.toggle-btn {
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+  padding: 1rem 1rem 1rem 1.5rem;
+
+  i {
+    font-size: 1.5rem;
+    color: $primary-color;
+  }
+}
+
+.sidebar-logo {
+  margin: auto 0;
+  opacity: 1;
+  @include transition(opacity);
+
+  a {
+    color: $primary-color;
+    font-size: 1.15rem;
+    font-weight: 600;
+
+    &:hover {
+      color: $brand-hover-color;
+    }
+  }
+}
+
+.sidebar-nav {
+  padding: 2rem 0;
+  flex: 1 1 auto;
+}
+
+.sidebar-item {
+  position: relative;
+}
+
+a.sidebar-link {
+  padding: 0.8rem 1rem;
+  margin: 0.5rem;
+  color: $text-color;
+  display: block;
+  font-size: $font-size;
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+
+  i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+  }
+
+  &:hover {
+    background-color: $shadow-background;
+    color: $text-color;
+    border-radius: 10px;
+  }
+}
+
+.sidebar-link span {
+  opacity: 1;
+  @include transition(opacity);
+}
+
+#sidebar.collapse {
+  .sidebar-logo,
+  .sidebar-link span {
+    @include transition(opacity);
+    opacity: 0;
+    overflow: hidden;
+  }
+}
+
+#sidebar.collapse .sidebar-item .sidebar-dropdown {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  background-color: $white-background-color;
+  padding: 0;
+  min-width: 15rem;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  @include multi-transition(opacity, height);
+}
+
+#sidebar.collapse .sidebar-item:hover .has-dropdown + .sidebar-dropdown {
+  display: block;
+  max-height: 15em;
+  width: 100%;
+  opacity: 1;
+  @include multi-transition(opacity, height);
+}

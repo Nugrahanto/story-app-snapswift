@@ -1,0 +1,43 @@
+@use '../abstracts/index' as *;
+
+body {
+  font-family: 'Signika', sans-serif;
+}
+
+.wrapper {
+  display: flex;
+  background-color: $background-color;
+}
+
+.content {
+  margin-left: $sidebar-width;
+  min-height: 100vh;
+  flex: 1;
+  overflow: hidden;
+  @include transition(margin-left);
+  background-color: $background-color;
+}
+
+#sidebar {
+  height: 100vh;
+  width: $sidebar-width;
+  min-width: $sidebar-collapse-width;
+  z-index: 1000;
+  @include transition(width);
+  background-color: $white-background-color;
+  display: flex;
+  flex-direction: column;
+  @include boxShadow(10px, 0px, 10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &.collapse {
+    width: $sidebar-collapse-width;
+    min-width: $sidebar-collapse-width;
+  }
+
+  &.collapse ~ .content {
+    margin-left: $sidebar-collapse-width;
+  }
+}
