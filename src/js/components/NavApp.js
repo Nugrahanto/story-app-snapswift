@@ -26,10 +26,7 @@ class NavApp extends LitWithoutShadowDom {
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item mb-3">
-                <nav-search class="d-flex"></nav-search>
-              </li>
-              <li class="nav-item mb-3">
-                <button-create></button-create>
+                <nav-search></nav-search>
               </li>
             </ul>
             <li class="nav-item dropdown me-5 mb-3">

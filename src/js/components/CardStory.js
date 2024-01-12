@@ -25,7 +25,18 @@ class CardStory extends LitWithoutShadowDom {
         <div class="card-body">
           <h5 class="card-title">${this.name}</h5>
           <p class="card-text lh-sm fw-light">${this.description}</p>
-          <p class="card-text"><small class="text-muted">${this.createdAt}</small></p>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="">
+              <p class="card-text">
+                <small class="text-muted">${this.createdAt}</small>
+              </p>
+            </div>
+            <div class="">
+              <button class="btn btn-sm btn-outline-base rounded-pill">
+                <i class="bi bi-heart-fill"></i>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     `;

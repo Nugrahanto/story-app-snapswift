@@ -9,10 +9,10 @@ class NavUser extends LitWithoutShadowDom {
         Nugrahanto
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-        <li><a class="dropdown-item" href="#">Your Activity</a></li>
-        <li><a class="dropdown-item" href="#">Switch Account</a></li>
+        <nav-user-links label="${`Your Activity`}" href="${``}"></nav-user-links>
+        <nav-user-links label="${`Switch Account`}" href="${``}"></nav-user-links>
         <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Log out</a></li>
+        <nav-user-links label="${`Log out`}" href="${``}"></nav-user-links>
       </ul>
     `;
   }

@@ -4,9 +4,9 @@ import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
 class NavSearch extends LitWithoutShadowDom {
   render() {
     return html`
-      <div class="rounded-pill bg-white p-1 px-3 shadow me-5 search">
+      <div class="rounded-pill bg-white p-2 px-3 shadow search d-flex">
         <i class="bi bi-search"></i>
-        <input id="searchInput" class="me-5" type="text" placeholder="Search">
+        <input id="searchInput" type="text" placeholder="Search">
       </div>
     `;
   }

@@ -7,56 +7,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <aside id="sidebar">
-      <div class="d-flex pt-3">
-        <button class="toggle-btn" type="button">
-          <i class="bi bi-hearts"></i>
-        </button>
-        <div class="sidebar-logo">
-          <a href="#">Snapswift</a>
-        </div>
-      </div>
-      <ul class="sidebar-nav">
-        <li class="sidebar-item">
-          <a href="#home" class="sidebar-link">
-            <i class="bi bi-house-door-fill"></i>
-            <span>Home</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="#disco" class="sidebar-link">
-            <i class="bi bi-compass"></i>
-            <span>Discover</span>
-          </a>
-        </li>
-        <li class="sidebar-item">
-          <a href="#" class="sidebar-link">
-            <i class="bi bi-person"></i>
-            <span>Profile</span>
-          </a>
-        </li>
-      </ul>
-      <div class="sidebar-footer">
-        <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-          <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-              <i class="bi bi-gear"></i>
-              <span>Settings</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
-              <i class="bi bi-question-square"></i>
-              <span>Help/FAQ</span>
-            </a>
-          </li>
-        </ul>
-        <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-          <i class="bi bi-grid-fill"></i>
-          <span>More</span>
-        </a>
-      </div>
-    </aside>
+    <sidebar-app id="sidebar" brandLogo="<%= brandName %>"></sidebar-app>
     <div class="content">
       <header class="header" id="header">
         <nav-app brandName="<%= brandName %>"></nav-app>
@@ -75,25 +26,15 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-4 col-md-12 col-sm-12 px-3">
-                <p>About Snapswift</p>
-                <p class="text-muted" style="text-align: justify;"><small>
-                  Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.</small>
-                </p>
-                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <p>© 2024 Snapswift - Nugrahanto</p>
-              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12 px-3 mb-3">
+                <footer-app ></footer-app>
+              </div>              
             </div>
           </div>
+          <button-create></button-create>
         </div>
       </main>
     </div>
   </div>
-  <button-create></button-create>
 </body>
 </html>
