@@ -59,42 +59,7 @@
     </aside>
     <div class="content">
       <header class="header" id="header">
-        <div class="navbar-wrapper">
-          <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid my-4 mx-3">
-              <a class="navbar-brand">Snapswift</a>
-              <div class="collapse navbar-collapse" id="navbarToggler">
-                <ul class="navbar-nav me-auto mb-lg-0">
-                  <li class="nav-item mb-3">
-                    <form class="d-flex">
-                      <div class="rounded-pill bg-white p-1 px-3 shadow me-5 search">
-                        <i class="bi bi-search"></i>
-                        <input class="me-5" type="text" placeholder="Search">
-                      </div>
-                    </form>
-                  </li>
-                  <li class="nav-item mb-3">
-                    <a class="btn btn-base rounded-pill shadow" href="#" role="button">Create story</a>
-                  </li>
-                </ul>
-                <li class="nav-item dropdown me-5 mb-3">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Nugrahanto
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                    <li><a class="dropdown-item" href="#">Your Activity</a></li>
-                    <li><a class="dropdown-item" href="#">Switch Account</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Log out</a></li>
-                  </ul>
-                </li>
-              </div>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </div>
-          </nav>
-        </div>
+        <nav-app brandName="<%= brandName %>"></nav-app>
       </header>
       <main class="main" id="main">
         <div class="container">
@@ -105,26 +70,7 @@
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
                     <div class="container pl-5 pr-5">
-                      <div class="card">
-                        <img src="https://source.unsplash.com/1200x700/?nature" class="card-img-top" alt="Nature Image">
-                        <div class="card-body">
-                          <h5 class="card-title">Faisal Sulaiman</h5>
-                          <p class="card-text lh-sm fw-light">In rhoncus lorem nec ex egestas mollis vel a mauris. Pellentesque vel diam at neque hendrerit bibendum. Quisque egestas, dolor eu semper dapibus, turpis neque.</p>
-                          <p class="card-text"><small class="text-muted">Created at: 2022-01-08 06:34:18</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
-                    <div class="container pl-5 pr-5">
-                      <div class="card">
-                        <img src="https://source.unsplash.com/1200x700/?tennis" class="card-img-top" alt="Nature Image">
-                        <div class="card-body">
-                          <h5 class="card-title">Alya Jamaluddin</h5>
-                          <p class="card-text lh-sm fw-light">In a pretium sem. Suspendisse eget sollicitudin enim, sed suscipit mi. Integer sagittis lorem urna, tincidunt viverra lectus gravida id. Praesent venenatis nibh ac nisi.</p>
-                          <p class="card-text"><small class="text-muted">Created at: 022-01-08 06:34:18</small></p>
-                        </div>
-                      </div>
+                      <div id="card-container"></div>
                     </div>
                   </div>
                 </div>
@@ -148,13 +94,6 @@
       </main>
     </div>
   </div>
-
-  <script>
-    const hamBurger = document.querySelector(".toggle-btn");
-
-    hamBurger.addEventListener("click", function () {
-      document.querySelector("#sidebar").classList.toggle("collapse");
-    });
-  </script>
+  <button-create></button-create>
 </body>
 </html>

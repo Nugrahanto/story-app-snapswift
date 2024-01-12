@@ -35,7 +35,11 @@
     display: block !important;
   }
 
+  .search i {
+    display: none;
+  }
+
   .search input {
-    width: 140px;
+    width: 140px !important;
   }
 }

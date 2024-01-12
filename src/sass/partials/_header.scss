@@ -5,7 +5,7 @@
 }
 
 .search i {
-  font-size: 18px;
+  font-size: 16px;
   color: #777;
 }
 
@@ -14,6 +14,6 @@
   flex: 1;
   border: none;
   outline: none;
-  font-size: var.$font-size;
+  font-size: var.$font-size-search;
   padding: 2.5px 10px;
 }

@@ -1,6 +1,9 @@
 // Import our custom CSS
 import '../sass/main.scss';
 
+// Import components
+import './components/index';
+
 // Import javascript file as needed
 import Dashboard from './pages/dashboard';
 import * as bootstrap from 'bootstrap';
@@ -11,7 +14,13 @@ const routes = {
 
 const detectRoute = () => routes[window.location.pathname];
  
-const initPages = () => {};
+const initPages = () => {
+    const SnapSwift = document.querySelector(".toggle-btn");
+
+  SnapSwift.addEventListener("click", function () {
+    document.querySelector("#sidebar").classList.toggle("collapse");
+  });
+};
  
 window.addEventListener('DOMContentLoaded', async () => {
   initPages();
