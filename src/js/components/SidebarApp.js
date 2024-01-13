@@ -4,6 +4,7 @@ import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
 class SidebarApp extends LitWithoutShadowDom {
   static properties = {
     brandLogo: { type: String, reflect: true },
+    pageType: { type: String, reflect: true },
   };
  
   constructor() {
@@ -18,17 +19,25 @@ class SidebarApp extends LitWithoutShadowDom {
   }
  
   render() {
+    let iconTypeHome;
+
+    if (this.pageType === 'dashboard') {
+      iconTypeHome = 'bi-house-door-fill';
+    } else {
+      iconTypeHome = 'bi-house-door';
+    } 
+
     return html`
       <div class="d-flex pt-3">
         <button class="toggle-btn" type="button">
           <i class="bi bi-hearts"></i>
         </button>
         <div class="sidebar-logo">
-          <a href="#">${this.brandLogo}</a>
+          <a href="/">${this.brandLogo}</a>
         </div>
       </div>
       <ul class="sidebar-nav">
-        <sidebar-links icon="bi-house-door-fill" label="${`Home`}" href="#Home"></sidebar-links>
+        <sidebar-links icon="${iconTypeHome}" label="${`Home`}" href="/"></sidebar-links>
         <sidebar-links icon="bi-compass" label="${`Discover`}" href="#Dis"></sidebar-links>
         <sidebar-links icon="bi-person" label="${`Profile`}" href="#Pro"></sidebar-links>
       </ul>

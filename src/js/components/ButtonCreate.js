@@ -34,6 +34,7 @@ class ButtonCreate extends LitElement {
       border: none;
       font-size: 2rem;
       box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
     }
   `;
  
@@ -41,10 +42,14 @@ class ButtonCreate extends LitElement {
     return html`
       <div class="container-button">
         <div class="content-button">
-          <a class="btn-circle" href="#" role="button">+</a>
+          <a class="btn-circle" tabindex="0" role="button" @click="${this._navigateToAddStory}">+</a>
         </div>
       </div>
     `;
+  }
+
+  _navigateToAddStory() {
+    window.location.href = '/addstory.html';
   }
 }
 

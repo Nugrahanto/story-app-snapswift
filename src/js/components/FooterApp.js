@@ -46,6 +46,7 @@ class FooterApp extends LitElement {
     border-radius: .25rem;
     font-family: 'Signika', sans-serif;
     height: fit-content;
+    cursor: pointer;
   }
 
   .select-locale:active,

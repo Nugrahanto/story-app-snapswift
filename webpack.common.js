@@ -54,6 +54,12 @@ module.exports = {
       template: path.resolve(__dirname, 'src/views/dashboard.html'),
       ...htmlWebpackPluginConfig,
     }),
+    new HtmlWebpackPlugin({
+      title: 'Add Story',
+      filename: 'addstory.html',
+      template: path.resolve(__dirname, 'src/views/addstory.html'),
+      ...htmlWebpackPluginConfig,
+    }),
 
     new CleanWebpackPlugin(),
   ],

@@ -4,6 +4,7 @@ import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
 class NavApp extends LitWithoutShadowDom {
   static properties = {
     brandName: { type: String, reflect: true },
+    pageType: { type: String, reflect: true },
   };
  
   constructor() {
@@ -21,12 +22,13 @@ class NavApp extends LitWithoutShadowDom {
     return html`
     <div class="navbar-wrapper">
       <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid my-4 mx-3">
-          <a class="navbar-brand">${this.brandName}</a>
+        <div class="container-fluid mt-4 mx-3">
+          ${this.pageType === 'dashboard' ? html`<a class="navbar-brand">${this.brandName}</a>` : ''}
+          ${this.pageType === 'addstory' ? html`<a class="navbar-brand d-block">Add Story</a>` : ''}
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item mb-3">
-                <nav-search></nav-search>
+                ${this.pageType === 'dashboard' ? html`<nav-search></nav-search>` : ''}
               </li>
             </ul>
             <li class="nav-item dropdown me-5 mb-3">
