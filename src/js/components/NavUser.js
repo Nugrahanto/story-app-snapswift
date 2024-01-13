@@ -5,7 +5,7 @@ class NavUser extends LitWithoutShadowDom {
  
   render() {
     return html`
-      <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         Nugrahanto
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">

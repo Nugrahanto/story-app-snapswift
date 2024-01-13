@@ -2,6 +2,7 @@
 @use 'sass:map';
 // Custom modules
 @use '../vendors-extensions/bootstrap/components/buttons' as btn;
+@use '../vendors-extensions/bootstrap/forms/form-controls' as form-controls;
 @use '../vendors-extensions/bootstrap/variables/colors' as color;
 
 // ==================================================
@@ -26,6 +27,9 @@ $btn-padding-y: btn.$padding-y;
 $btn-border-radius: btn.$border-radius;
 $btn-border-radius-sm: btn.$border-radius-sm;
 $btn-border-radius-lg: btn.$border-radius-lg;
+// Form Controls
+$input-focus-box-shadow: form-controls.$input-focus-box-shadow;
+$input-focus-border-color: form-controls.$input-focus-border-color;
 
 //
 // Konfigurasi Bootstrap

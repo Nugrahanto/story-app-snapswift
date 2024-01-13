@@ -4,75 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %> | Snapswift</title>
-  <style>
-    textarea:focus {
-      background-color: #f0f0f0;
-      outline: none !important;
-    }
-
-    label {
-      font-weight: bold;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .custom-file {
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 2px dashed #ffc0cb;
-      background-color: #fff;
-    }
-
-    .custom-file-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      max-width: 100%;
-      max-height: 100%;
-      margin: 0;
-      padding: 0;
-      font-size: 20px;
-      cursor: pointer;
-      opacity: 0;
-    }
-
-    .custom-file-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Menengahkan secara vertikal dan horizontal */
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      text-align: center;
-    }
-
-    .preview-image-container {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-
-    .preview-image {
-      max-width: 100%;
-      max-height: 100%;
-      display: block;
-      margin: auto;
-      object-fit: contain; 
-    }
-
-    .description-container {
-      width: 400px;
-    }
-  </style>
 </head>
 <body>
   <div class="wrapper">
@@ -85,24 +16,24 @@
       <main class="main" id="main">
         <div class="container-fluid">
           <div class="main-content px-3 py-4">
-            <form>
+            <form id="addStoryForm" novalidate>
               <div class="d-flex flex-wrap flex-lg-nowrap">
-                <div class="container-fluid text-center">
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="photo" name="photo" accept="image/*" onchange="displayImage(this)" required>
-                    <label class="custom-file-label" for="photo">Choose file</label>
-                    <div class="preview-image-container">
-                      <img class="preview-image" id="previewImage" src="#" alt="Preview Image" style="display: none;">
-                    </div>
-                  </div>
-                </div>
+                <input-image-preview
+                  inputId="imageStory"
+                  inputName="imageStory"
+                  class="container-fluid text-center"
+                  invalidFeedbackMessage="Please choose image." 
+                  required></input-image-preview>                
                 <div class="container-fluid">
-                  <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control desc-box" id="description" name="description" rows="3" required></textarea>
-                  </div>
+                  <textarea-with-validation
+                    inputId="descriptionStory"
+                    inputName="descriptionStory"
+                    rows="3"
+                    invalidFeedbackMessage="Please fill in."
+                    required
+                  ></textarea-with-validation>
                   <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-block btn-base rounded-pill">Post</button>
+                    <button type="submit" class="btn btn-block btn-base rounded-pill py-2">Post Story</button>
                   </div>
                 </div>
               </div>
@@ -116,57 +47,5 @@
       </div>
     </div>
   </div>
-  <script>
-    function displayImage(input) {
-      const container = document.querySelector('.custom-file');
-      const previewImage = document.getElementById('previewImage');
-      const customFileLabel = document.querySelector('.custom-file-label');
-      const file = input.files[0];
-  
-      container.style.width = '100%';
-      container.style.height = '200px';  
-      
-      if (file) {
-        const reader = new FileReader();
-  
-        reader.onload = function(e) {
-          const img = new Image();
-          img.src = e.target.result;
-  
-          img.onload = function() {
-            customFileLabel.style.display = 'none'; 
-            previewImage.src = e.target.result;
-            previewImage.style.display = 'block';
-
-            console.log("height "+previewImage.offsetHeight+ " width "+previewImage.offsetWidth);
-
-            if (img.width > container.offsetWidth && img.height > container.offsetHeight) {
-              console.log('satu');
-              container.style.width = 'auto';
-              container.style.height = 'auto';
-            } else if (img.width > container.offsetWidth) {
-              console.log('dua');
-              container.style.width = 'auto';
-              container.style.height = previewImage.offsetHeight + 'px';
-            } else if (img.height > container.offsetHeight) {
-              console.log('tiga');
-              container.style.width = 'auto';
-              container.style.height = 'auto';
-            } else {
-              console.log('empat');
-              container.style.width = 'auto';
-              container.style.height = previewImage.offsetHeight + 'px';
-            }
-          };
-        };
-  
-        reader.readAsDataURL(file);
-      } else {
-        previewImage.src = '#';
-        previewImage.style.display = 'none';
-        customFileLabel.style.display = 'block';
-      }
-    }
-  </script>
 </body>
 </html>

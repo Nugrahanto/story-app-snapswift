@@ -11,3 +11,6 @@ import './SidebarApp';
 import './SidebarLinks';
 
 import './FooterApp';
+
+import './form/InputImagePreview';
+import './form/TextAreaWithVaildations';

@@ -6,10 +6,12 @@ import './components/index';
 
 // Import javascript file as needed
 import Dashboard from './pages/dashboard';
+import AddStory from './pages/addstory';
 import * as bootstrap from 'bootstrap';
 
 const routes = {
-  '/': Dashboard,
+  '/': Dashboard,  
+  '/addstory.html': AddStory,
 };
 
 const detectRoute = () => routes[window.location.pathname];
@@ -17,7 +19,7 @@ const detectRoute = () => routes[window.location.pathname];
 const initPages = () => {
     const SnapSwift = document.querySelector(".toggle-btn");
 
-  SnapSwift.addEventListener("click", function () {
+    SnapSwift.addEventListener("click", function () {
     document.querySelector("#sidebar").classList.toggle("collapse");
   });
 };
