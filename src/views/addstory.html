@@ -21,20 +21,16 @@
                 <input-image-preview
                   inputId="imageStory"
                   inputName="imageStory"
-                  class="container-fluid text-center"
-                  invalidFeedbackMessage="Please choose image." 
+                  class="container-fluid text-center" 
                   required></input-image-preview>                
                 <div class="container-fluid">
                   <textarea-with-validation
                     inputId="descriptionStory"
                     inputName="descriptionStory"
                     rows="3"
-                    invalidFeedbackMessage="Please fill in."
                     required
                   ></textarea-with-validation>
-                  <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-block btn-base rounded-pill py-2">Post Story</button>
-                  </div>
+                  <button-post></button-post>
                 </div>
               </div>
             </form>

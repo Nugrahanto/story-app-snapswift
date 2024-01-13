@@ -1,7 +1,12 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class NavUser extends LitWithoutShadowDom {
+  constructor() {
+    super();
+    updateWhenLocaleChanges(this);
+  }
  
   render() {
     return html`
@@ -9,10 +14,10 @@ class NavUser extends LitWithoutShadowDom {
         Nugrahanto
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-        <nav-user-links label="${`Your Activity`}" href="${``}"></nav-user-links>
-        <nav-user-links label="${`Switch Account`}" href="${``}"></nav-user-links>
+        <nav-user-links label="${msg(`Your Activity`)}" href="${`#ya`}"></nav-user-links>
+        <nav-user-links label="${msg(`Switch Account`)}" href="${`#sa`}"></nav-user-links>
         <li><hr class="dropdown-divider"></li>
-        <nav-user-links label="${`Log out`}" href="${``}"></nav-user-links>
+        <nav-user-links label="${msg(`Log out`)}" href="${`#logout`}"></nav-user-links>
       </ul>
     `;
   }

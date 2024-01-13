@@ -1,4 +1,5 @@
 import '../components/form/InputImagePreview';
+import { msg, str } from '@lit/localize';
 
 const AddStory = {
   inputImagePreview: null,
@@ -10,6 +11,9 @@ const AddStory = {
 
   _initialUI() {
     this.inputImagePreview = document.querySelector('input-image-preview');
+    // const postStoryButton = document.querySelector('#postStory');
+
+    // postStoryButton.textContent = msg(str`Post Story`);
   },
 
   _initialListener() {

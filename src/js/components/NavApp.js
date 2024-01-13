@@ -1,5 +1,6 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class NavApp extends LitWithoutShadowDom {
   static properties = {
@@ -10,6 +11,7 @@ class NavApp extends LitWithoutShadowDom {
   constructor() {
     super();
     this._checkAvailabilityProperty()
+    updateWhenLocaleChanges(this);
   }
  
   _checkAvailabilityProperty() {
@@ -24,7 +26,7 @@ class NavApp extends LitWithoutShadowDom {
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid mt-4 mx-3">
           ${this.pageType === 'dashboard' ? html`<a class="navbar-brand">${this.brandName}</a>` : ''}
-          ${this.pageType === 'addstory' ? html`<a class="navbar-brand d-block">Add Story</a>` : ''}
+          ${this.pageType === 'addstory' ? html`<a class="navbar-brand d-block">${msg(`Add Story`)}</a>` : ''}
           <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav me-auto mb-lg-0">
               <li class="nav-item mb-3">

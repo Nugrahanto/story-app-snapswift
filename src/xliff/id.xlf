@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="id" source-language="en" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="s6abb1cd87fe0114e">
+  <source>Home</source>
+  <target>Beranda</target>
+</trans-unit>
+<trans-unit id="s2d6a5f1d98d0738e">
+  <source>Discover</source>
+  <target>Jelajahi</target>
+</trans-unit>
+<trans-unit id="sb061ff5a347a296e">
+  <source>Profile</source>
+  <target>Profil</target>
+</trans-unit>
+<trans-unit id="s9d8b8aa2b404c2c8">
+  <source>Settings</source>
+  <target>Pengaturan</target>
+</trans-unit>
+<trans-unit id="s71bfb53addfbfd9d">
+  <source>Help/FAQ</source>
+  <target>Bantuan</target>
+</trans-unit>
+<trans-unit id="s37a9e8aec5713460">
+  <source>More</source>
+  <target>Lainnya</target>
+</trans-unit>
+<trans-unit id="sf6f5d8ff2a4899c5">
+  <source>New Post</source>
+  <target>Postingan Terbaru</target>
+</trans-unit>
+<trans-unit id="s1474edbc3eeaca03">
+  <source>seconds ago</source>
+  <target>detik yang lalu</target>
+</trans-unit>
+<trans-unit id="s4c0be30854a3beb7">
+  <source>minutes ago</source>
+  <target>menit yang lalu</target>
+</trans-unit>
+<trans-unit id="sffad8314c7d71c3d">
+  <source>hours ago</source>
+  <target>jam lalu</target>
+</trans-unit>
+<trans-unit id="s18c61ee29243b363">
+  <source>days ago</source>
+  <target>hari lalu</target>
+</trans-unit>
+<trans-unit id="s669f18c46e9b4703">
+  <source>weeks ago</source>
+  <target>minggu lalu</target>
+</trans-unit>
+<trans-unit id="s3312ced47adfa64b">
+  <source>months ago</source>
+  <target>bulan lalu</target>
+</trans-unit>
+<trans-unit id="se035254030147900">
+  <source>years ago</source>
+  <target>tahun lalu</target>
+</trans-unit>
+<trans-unit id="s5d88bcf38f034ab2">
+  <source>Post Story</source>
+  <target>Posting</target>
+</trans-unit>
+<trans-unit id="s1f30f2eaf1e38fb9">
+  <source>Add Story</source>
+  <target>Tambahkan Cerita</target>
+</trans-unit>
+<trans-unit id="s59cabd095ef00d63">
+  <source>Your Activity</source>
+  <target>Aktivitas Anda</target>
+</trans-unit>
+<trans-unit id="sedf702b03566dfa6">
+  <source>Switch Account</source>
+  <target>Ganti Akun</target>
+</trans-unit>
+<trans-unit id="sb64127e4e4f0b575">
+  <source>Log out</source>
+  <target>Keluar</target>
+</trans-unit>
+<trans-unit id="s78d8c6dde43e9cf9">
+  <source>About Snapswift</source>
+  <target>Tentang Snapswift</target>
+</trans-unit>
+<trans-unit id="sb7a5e7850b451e95">
+  <source>Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.</source>
+  <target>Snapswift adalah aplikasi yang dirancang untuk menyediakan pengguna dengan platform menarik untuk membuat, berbagi, dan menjelajahi cerita. Baik melalui gambar dan deskripsi yang menarik, SnapSwift bertujuan untuk membangun ruang kreatif di mana pengguna dapat berekspresi dan terhubung dengan komunitas penggagas cerita visual.</target>
+</trans-unit>
+<trans-unit id="s3f3f14b96f7f713d">
+  <source>Choose Image</source>
+  <target>Pilih Gambar</target>
+</trans-unit>
+<trans-unit id="s59675d3bb2b7b629">
+  <source>Description:</source>
+  <target>Deskripsi:</target>
+</trans-unit>
+<trans-unit id="s5d929ff1619ac0c9">
+  <source>Search</source>
+  <target>Cari</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

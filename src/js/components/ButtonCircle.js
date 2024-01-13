@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 
-class ButtonCreate extends LitElement {
+class ButtonCircle extends LitElement {
   static styles = css `
     :host{
       margin: 0;
@@ -53,4 +53,4 @@ class ButtonCreate extends LitElement {
   }
 }
 
-customElements.define('button-create', ButtonCreate);
+customElements.define('button-circle', ButtonCircle);

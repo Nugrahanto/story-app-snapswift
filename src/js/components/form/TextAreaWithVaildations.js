@@ -1,5 +1,6 @@
-import { html, nothing } from 'lit';
+import { html } from 'lit';
 import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
  
 class TextareaWithValidation extends LitWithoutShadowDom {
   static properties = {
@@ -7,14 +8,12 @@ class TextareaWithValidation extends LitWithoutShadowDom {
     inputId: { type: String, reflect: true },
     inputName: { type: String, reflect: true },
  
-    validFeedbackMessage: { type: String, reflect: true },
-    invalidFeedbackMessage: { type: String, reflect: true },
- 
     required: { type: Boolean, reflect: true },
   };
  
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
  
     this.required = false;
   }
@@ -22,20 +21,11 @@ class TextareaWithValidation extends LitWithoutShadowDom {
   render() {
     return html`
       <div class="mb-3">
-        <label for="descriptionStory">Description:</label>
+        <label for="descriptionStory">${msg(`Description:`)}</label>
         <textarea class="form-control" id=${this.inputId} name="${this.inputName}" rows="${this.rows}" required></textarea>
-        ${this._validFeedbackTemplate()}
-        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
+        <div class="invalid-feedback">Please fill in.</div>
       </div>
     `;
-  }
- 
-  _validFeedbackTemplate() {
-    if (this.validFeedbackMessage) {
-      return html` <div class="valid-feedback">${this.validFeedbackMessage}</div> `;
-    }
- 
-    return html``;
   }
 }
  

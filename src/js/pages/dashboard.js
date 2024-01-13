@@ -1,3 +1,5 @@
+import { msg, str } from '@lit/localize';
+
 const Dashboard = {
 
   async init() {
@@ -59,19 +61,19 @@ const Dashboard = {
     });
 
     if (seconds < 60) {
-      return `${seconds} seconds ago - ${formattedDate}`;
+      return `${seconds} ${msg(`seconds ago`)} - ${formattedDate}`;
     } else if (minutes < 60) {
-      return `${minutes} minutes ago - ${formattedDate}`;
+      return `${minutes} ${msg(`minutes ago`)} - ${formattedDate}`;
     } else if (hours < 24) {
-      return `${hours} hours ago - ${formattedDate}`;
+      return `${hours} ${msg(`hours ago`)} - ${formattedDate}`;
     } else if (days < 7) {
-      return `${days} days ago - ${formattedDate}`;
+      return `${days} ${msg(`days ago`)} - ${formattedDate}`;
     } else if (weeks < 4) {
-      return `${weeks} weeks ago - ${formattedDate}`;
+      return `${weeks} ${msg(`weeks ago`)} - ${formattedDate}`;
     } else if (months < 12) {
-      return `${months} months ago - ${formattedDate}`;
+      return `${months} ${msg(`months ago`)} - ${formattedDate}`;
     } else {
-      return `${years} years ago - ${formattedDate}`;
+      return `${years} ${msg(`years ago`)} - ${formattedDate}`;
     }
   }
 };

@@ -1,18 +1,17 @@
 import { LitElement, html, css } from 'lit';
+import { msg, updateWhenLocaleChanges } from '@lit/localize';
  
 class InputImagePreview extends LitElement {
   static properties = { 
     inputId: { type: String, reflect: true },
     inputName: { type: String, reflect: true },
-
-    validFeedbackMessage: { type: String, reflect: true },
-    invalidFeedbackMessage: { type: String, reflect: true },
  
     required: { type: Boolean, reflect: true },
   };
  
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
   }
 
   static styles = css`
@@ -81,13 +80,13 @@ class InputImagePreview extends LitElement {
     return html`
       <div class="custom-file">
         <input type="file" class="custom-file-input" id=${this.inputId} name="${this.inputName}" accept="image/*" @change=${this._updatePhotoPreview} ?required=${this.required}>
-        <label class="custom-file-label" for="image">Choose Image</label>
+        <label class="custom-file-label" for="image">${msg(`Choose Image`)}</label>
         <div class="preview-image-container">
           <img class="preview-image" id="previewImage" src="#" alt="Preview Image">
         </div>
       </div>
 
-      ${this._feedbackTemplate()}
+      <div class="invalid-feedback">Please choose image.</div>
     `;
   }
  
@@ -140,23 +139,6 @@ class InputImagePreview extends LitElement {
       container.style.height = 'auto';
       return;
     }
-  }
- 
-  _feedbackTemplate() {
-    let validFeedbackTemplate = '';
-    let invalidFeedbackTemplate = '';
-    if (this.validFeedbackMessage) {
-      validFeedbackTemplate = html`
-        <div class="valid-feedback">${this.validFeedbackMessage}</div>
-      `;
-    }
-    if (this.invalidFeedbackMessage) {
-      invalidFeedbackTemplate = html`
-        <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
-      `;
-    }
- 
-    return html`${validFeedbackTemplate}${invalidFeedbackTemplate}`;
   }
 }
  
