@@ -1,19 +1,17 @@
 import '../components/form/InputImagePreview';
-import { msg, str } from '@lit/localize';
+import CheckUserAuth from './accounts/check-user-auth';
 
 const AddStory = {
   inputImagePreview: null,
-
+ 
   async init() {
+    CheckUserAuth.checkLoginState();
     this._initialUI();
     this._initialListener();
   },
 
   _initialUI() {
     this.inputImagePreview = document.querySelector('input-image-preview');
-    // const postStoryButton = document.querySelector('#postStory');
-
-    // postStoryButton.textContent = msg(str`Post Story`);
   },
 
   _initialListener() {

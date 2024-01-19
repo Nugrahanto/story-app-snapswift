@@ -1,8 +1,10 @@
-import { msg, str } from '@lit/localize';
+import { msg } from '@lit/localize';
+import CheckUserAuth from './accounts/check-user-auth';
 
 const Dashboard = {
 
   async init() {
+    CheckUserAuth.checkLoginState();
     await this._initialData();
   },
 

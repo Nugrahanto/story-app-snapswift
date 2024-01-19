@@ -1,3 +1,7 @@
+import Auth from '../../network/auth';
+import Utils from '../../utils/utils';
+import Config from '../../config/config';
+
 const Login = {
   async init() {
     this._initialListener();
@@ -43,10 +47,42 @@ const Login = {
 
   async _getLogged() {
     const formData = this._getFormData();
+    const btnLogin = document.querySelector('#btnLogin');
      
     if (this._validateFormData({ ...formData })) {
+      btnLogin.disabled = true;
+      Utils.setToast('Loading...');
       console.log('formData');
       console.log(formData);
+
+      try {
+        const response = await Auth.login({
+          email: formData.email,
+          password: formData.password,
+        });
+
+        const userData = {
+          [Config.USER_ID_KEY]: response.data.loginResult.userId,
+          [Config.USER_NAME_KEY]: response.data.loginResult.name,
+          [Config.USER_TOKEN_KEY]: response.data.loginResult.token,
+        };
+        
+        Utils.setMultipleSessionStorage(userData);
+        const toastReturn = Utils.setToast('Successfully signed in. Happy exploring!', 'success');
+        this._toastTimeOut(toastReturn);
+      } catch (error) {
+        btnLogin.disabled = false;
+        console.error(error);
+        if (error.response && error.response.data) {
+          const errorMessage = error.response.data.message || 'An unknown error occurred.';          
+          const toastReturn = Utils.setToast(`Error: ${errorMessage}`, 'error');
+          this._toastTimeOut(toastReturn);
+        } else {
+          console.error(error);
+          const toastReturn = Utils.setToast('An unexpected error occurred. Please try again.', 'error');
+          this._toastTimeOut(toastReturn);
+        }
+      }
     }
   },
  
@@ -64,6 +100,17 @@ const Login = {
     const formDataFiltered = Object.values(formData).filter((item) => item === '');
  
     return formDataFiltered.length === 0;
+  },
+
+  _toastTimeOut(status) {
+    const toastContainer = document.querySelector('#toastContainer').firstChild;
+    
+    setTimeout(() => {
+      toastContainer.remove();
+      if (status === "success") {        
+        this._goToDashboardPage();
+      }
+    }, 3000);
   },
  
   _goToDashboardPage() {
