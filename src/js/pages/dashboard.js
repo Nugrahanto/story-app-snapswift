@@ -75,7 +75,8 @@ const Dashboard = {
         <card-story
             id="${story.id}"
             name="${story.name}"
-            photoUrl="${story.photoUrl}"
+            photoUrl="${story.photoUrl}"            
+            location="${story.lat}, ${story.lon}"
             description="${truncatedDescription}"
             createdAt="${story.createdAt}"
         ></card-story>
