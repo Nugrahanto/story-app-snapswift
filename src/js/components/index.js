@@ -13,7 +13,11 @@ import './SidebarLinks';
 
 import './FooterApp';
 
+import './form/InputWithValidation';
+import './form/InputWithValidationPass';
 import './form/InputImagePreview';
 import './form/TextAreaWithVaildations';
+
+import './BoxForm';
 
 import './form/LocalePicker';
