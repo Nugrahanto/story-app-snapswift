@@ -1,5 +1,7 @@
 import { html } from 'lit';
 import LitWithoutShadowDom from './base/LitWithoutShadowDom';
+import { updateWhenLocaleChanges } from '@lit/localize';
+import Utils from '../utils/utils';
  
 class CardStory extends LitWithoutShadowDom {
   static properties = {
@@ -7,28 +9,40 @@ class CardStory extends LitWithoutShadowDom {
     description: { type: String, reflect: true },
     photoUrl: { type: String, reflect: true },
     createdAt: { type: String, reflect: true },
+    location: { type: String, reflect: true },
   };
  
   constructor() {
     super();
+    updateWhenLocaleChanges(this);
 
     this.name = '';
     this.description = '';
     this.photoUrl = '';
     this.createdAt = '';
+    this.location = '';
   }
  
   render() {
     return html`
       <div class="card">
-        <img src="${this.photoUrl}" class="card-img-top" alt="Story Image">
+        <div class="d-flex align-items-center card-header bg-white p-3">
+          <img
+            id="imgAccount"
+            class="rounded-pill"
+            src="https://ui-avatars.com/api/?background=random&size=32&name=${this.name}"
+            alt="User Name"
+          />
+          <span class="fw-bold ms-3">${this.name}</span>
+        </div>
+        <img src="${this.photoUrl}" alt="Story Image">
         <div class="card-body">
-          <h5 class="card-title">${this.name}</h5>
-          <p class="card-text lh-sm fw-light">${this.description}</p>
+          <span class="card-title">${this.name}</span>
+          <span class="card-text lh-sm fw-light">${this.description}</span>
           <div class="d-flex align-items-center justify-content-between">
             <div class="">
               <p class="card-text">
-                <small class="text-muted">${this.createdAt}</small>
+                <small class="text-muted">${Utils.setFormatCreatedAt(this.createdAt)}</small>
               </p>
             </div>
             <div class="">

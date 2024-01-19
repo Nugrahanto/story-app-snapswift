@@ -20,6 +20,7 @@
 's37a9e8aec5713460': `Lainnya`,
 's3dab6bcbc22dc3e0': `Konfirmasi Kata Sandi`,
 's3f3f14b96f7f713d': `Pilih Gambar`,
+'s497c1019cdbf2de2': `Hai,`,
 's4c0be30854a3beb7': `menit yang lalu`,
 's59675d3bb2b7b629': `Deskripsi:`,
 's59cabd095ef00d63': `Aktivitas Anda`,

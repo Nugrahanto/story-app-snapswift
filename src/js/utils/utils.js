@@ -1,3 +1,5 @@
+import { msg } from '@lit/localize';
+
 const Utils = {
   getUserSession(key) {
     return sessionStorage.getItem(key);
@@ -58,6 +60,42 @@ const Utils = {
       return lastName = fullName;
     }
   },
+
+  setFormatCreatedAt(isoDateString) {
+    const date = new Date(isoDateString);
+    const now = new Date();
+
+    const timeDifference = now - date;
+    const seconds = Math.floor(timeDifference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const weeks = Math.floor(days / 7);
+    const months = Math.floor(days / 30); // Perkiraan 30 hari per bulan
+    const years = Math.floor(days / 365); // Perkiraan 365 hari per tahun
+
+    const formattedDate = date.toLocaleString('id-ID', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+
+    if (seconds < 60) {
+      return `${seconds} ${msg(`seconds ago`)} - ${formattedDate}`;
+    } else if (minutes < 60) {
+      return `${minutes} ${msg(`minutes ago`)} - ${formattedDate}`;
+    } else if (hours < 24) {
+      return `${hours} ${msg(`hours ago`)} - ${formattedDate}`;
+    } else if (days < 7) {
+      return `${days} ${msg(`days ago`)} - ${formattedDate}`;
+    } else if (weeks < 4) {
+      return `${weeks} ${msg(`weeks ago`)} - ${formattedDate}`;
+    } else if (months < 12) {
+      return `${months} ${msg(`months ago`)} - ${formattedDate}`;
+    } else {
+      return `${years} ${msg(`years ago`)} - ${formattedDate}`;
+    }
+  }
   
 };
  

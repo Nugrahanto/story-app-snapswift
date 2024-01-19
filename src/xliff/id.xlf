@@ -138,6 +138,10 @@
   <source>Have an account?</source>
   <target>Sudah memiliki akun?</target>
 </trans-unit>
+<trans-unit id="s497c1019cdbf2de2">
+  <source>Hi,</source>
+  <target>Hai,</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

@@ -12,9 +12,10 @@ class NavUser extends LitWithoutShadowDom {
   }
  
   render() {
+    const greetings = msg(`Hi,`);
     return html`
       <a id="username" class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Hi, ${Utils.getUserLastName(Utils.getUserSession(Config.USER_NAME_KEY))}
+        ${greetings} ${Utils.getUserLastName(Utils.getUserSession(Config.USER_NAME_KEY))}
       </a>
       <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
         <nav-user-links label="${msg(`Your Activity`)}" href="${`#ya`}"></nav-user-links>
