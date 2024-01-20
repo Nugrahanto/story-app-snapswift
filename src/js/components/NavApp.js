@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
+import LitWithoutShadowDom from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class NavApp extends LitWithoutShadowDom {
@@ -10,7 +10,7 @@ class NavApp extends LitWithoutShadowDom {
  
   constructor() {
     super();
-    this._checkAvailabilityProperty()
+    this._checkAvailabilityProperty();
     updateWhenLocaleChanges(this);
   }
  

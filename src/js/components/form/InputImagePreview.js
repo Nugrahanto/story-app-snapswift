@@ -66,7 +66,7 @@ class InputImagePreview extends LitElement {
       object-fit: contain; 
     }
 
-    .invalid-feedback {
+    .invalid-feedback-empty, .invalid-feedback-big {
       text-align: left;
       display: none;
       width: 100%;
@@ -80,13 +80,14 @@ class InputImagePreview extends LitElement {
     return html`
       <div class="custom-file">
         <input type="file" class="custom-file-input" id=${this.inputId} name="${this.inputName}" accept="image/*" @change=${this._updatePhotoPreview} ?required=${this.required}>
-        <label class="custom-file-label" for="image">${msg(`Choose Image`)}</label>
+        <label class="custom-file-label" for="image">${msg(`Choose Image (Max Size 1MB)`)}</label>
         <div class="preview-image-container">
           <img class="preview-image" id="previewImage" src="#" alt="Preview Image">
         </div>
       </div>
 
-      <div class="invalid-feedback">Please choose image.</div>
+      <div class="invalid-feedback-empty">${msg(`Please choose image.`)}</div>
+      <div class="invalid-feedback-big">${msg(`Max size is 1MB.`)}</div>
     `;
   }
  
@@ -94,7 +95,8 @@ class InputImagePreview extends LitElement {
     const container = this.shadowRoot.querySelector('.custom-file');
     const previewImage = this.shadowRoot.querySelector('#previewImage');
     const customFileLabel = this.shadowRoot.querySelector('.custom-file-label');
-    const textValidateImageStoryInput = this.shadowRoot.querySelector('.invalid-feedback');
+    const textValidateImageStoryInputEmpty = this.shadowRoot.querySelector('.invalid-feedback-empty');
+    const textValidateImageStoryInputBig = this.shadowRoot.querySelector('.invalid-feedback-big');
     const input = this.shadowRoot.querySelector('.custom-file-input');
     const image = input.files[0];
 
@@ -113,7 +115,8 @@ class InputImagePreview extends LitElement {
           previewImage.src = img.src;
           previewImage.style.display = 'block';
 
-          textValidateImageStoryInput.style.display = 'none';
+          textValidateImageStoryInputEmpty.style.display = 'none';
+          textValidateImageStoryInputBig.style.display = 'none';
           container.style.display = 'transparent';
           container.style.border = '2px dashed #ffc0cb';
 

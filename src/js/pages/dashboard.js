@@ -1,19 +1,54 @@
-import { msg, str } from '@lit/localize';
+import CheckUserAuth from './accounts/check-user-auth';
+import Stories from '../network/stories';
 
 const Dashboard = {
 
+  currentPage: 1,
+  pageSize: 5,
+  loading: false,
+
   async init() {
+    CheckUserAuth.checkLoginState();
     await this._initialData();
+    this._setupScrollListener();
   },
 
   async _initialData() {
     try {
-      const response = await fetch('https://raw.githubusercontent.com/dicodingacademy/a565-webtools-labs/099-shared-files/proyek-awal/DATA.json');
-      const data = await response.json();
+      const response = await Stories.getAll(this.currentPage, this.pageSize);
+      const responseRecords = response.data.listStory;
 
-      this._createStoryCards(data.listStory);
+      this._createStoryCards(responseRecords);
     } catch (error) {
       console.error('Error fetching data:', error);
+    }
+  },
+
+  _setupScrollListener() {
+    window.addEventListener('scroll', () => {
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+
+      if (scrollTop + clientHeight >= scrollHeight - 500 && !this.loading) {
+        this._loadMoreData();
+      }
+    });
+  },
+
+  async _loadMoreData() {
+    try {
+      this.loading = true;
+      const response = await Stories.getAll(this.currentPage, this.pageSize);
+      const responseRecords = response.data.listStory;
+
+      if (responseRecords.length > 0) {
+        this._createStoryCards(responseRecords);
+      }
+    } catch (error) {
+      console.error('Error fetching more data:', error);
+    } finally {
+      this.loading = false;
     }
   },
 
@@ -21,8 +56,9 @@ const Dashboard = {
     const cardContainer = document.getElementById('card-container');
 
     listStory.forEach(story => {
-      cardContainer.innerHTML += this._createCardElements(story);
+      cardContainer.insertAdjacentHTML('beforeend', this._createCardElements(story));
     });
+    this.currentPage = this.currentPage + 1;
   },
 
   _createCardElements(story) {
@@ -32,50 +68,16 @@ const Dashboard = {
         <card-story
             id="${story.id}"
             name="${story.name}"
-            photoUrl="${story.photoUrl}"
-            description="${story.description.slice(0, 100)}..."
-            createdAt="${this._formatCreatedAt(story.createdAt)}"
+            photoUrl="${story.photoUrl}"            
+            location="${story.lat}, ${story.lon}"
+            description="${story.description}"
+            createdAt="${story.createdAt}"
         ></card-story>
       </div>
     </div>
     `;
   },
 
-  _formatCreatedAt(isoDateString) {
-    const date = new Date(isoDateString);
-    const now = new Date();
-
-    const timeDifference = now - date;
-    const seconds = Math.floor(timeDifference / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-    const weeks = Math.floor(days / 7);
-    const months = Math.floor(days / 30); // Perkiraan 30 hari per bulan
-    const years = Math.floor(days / 365); // Perkiraan 365 hari per tahun
-
-    const formattedDate = date.toLocaleString('id-ID', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    });
-
-    if (seconds < 60) {
-      return `${seconds} ${msg(`seconds ago`)} - ${formattedDate}`;
-    } else if (minutes < 60) {
-      return `${minutes} ${msg(`minutes ago`)} - ${formattedDate}`;
-    } else if (hours < 24) {
-      return `${hours} ${msg(`hours ago`)} - ${formattedDate}`;
-    } else if (days < 7) {
-      return `${days} ${msg(`days ago`)} - ${formattedDate}`;
-    } else if (weeks < 4) {
-      return `${weeks} ${msg(`weeks ago`)} - ${formattedDate}`;
-    } else if (months < 12) {
-      return `${months} ${msg(`months ago`)} - ${formattedDate}`;
-    } else {
-      return `${years} ${msg(`years ago`)} - ${formattedDate}`;
-    }
-  }
 };
  
 export default Dashboard;

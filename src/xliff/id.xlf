@@ -26,10 +26,6 @@
   <source>More</source>
   <target>Lainnya</target>
 </trans-unit>
-<trans-unit id="sf6f5d8ff2a4899c5">
-  <source>New Post</source>
-  <target>Postingan Terbaru</target>
-</trans-unit>
 <trans-unit id="s1474edbc3eeaca03">
   <source>seconds ago</source>
   <target>detik yang lalu</target>
@@ -82,14 +78,6 @@
   <source>About Snapswift</source>
   <target>Tentang Snapswift</target>
 </trans-unit>
-<trans-unit id="sb7a5e7850b451e95">
-  <source>Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.</source>
-  <target>Snapswift adalah aplikasi yang dirancang untuk menyediakan pengguna dengan platform menarik untuk membuat, berbagi, dan menjelajahi cerita. Baik melalui gambar dan deskripsi yang menarik, SnapSwift bertujuan untuk membangun ruang kreatif di mana pengguna dapat berekspresi dan terhubung dengan komunitas penggagas cerita visual.</target>
-</trans-unit>
-<trans-unit id="s3f3f14b96f7f713d">
-  <source>Choose Image</source>
-  <target>Pilih Gambar</target>
-</trans-unit>
 <trans-unit id="s59675d3bb2b7b629">
   <source>Description:</source>
   <target>Deskripsi:</target>
@@ -97,6 +85,78 @@
 <trans-unit id="s5d929ff1619ac0c9">
   <source>Search</source>
   <target>Cari</target>
+</trans-unit>
+<trans-unit id="s0c44e47080f0ceb5">
+  <source>Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, Snapswift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.</source>
+  <target>Snapswift adalah aplikasi yang dirancang untuk menyediakan pengguna dengan platform menarik untuk membuat, berbagi, dan menjelajahi cerita. Baik melalui gambar dan deskripsi yang menarik, Snapswift bertujuan untuk membangun ruang kreatif di mana pengguna dapat berekspresi dan terhubung dengan komunitas penggagas cerita visual.</target>
+</trans-unit>
+<trans-unit id="sd07447ab6ea27c68">
+  <source>Please fill in correctly.</source>
+  <target>Mohon diisi dengan benar.</target>
+</trans-unit>
+<trans-unit id="sd1f44f1a8bc20e67">
+  <source>Email</source>
+  <target>Email</target>
+</trans-unit>
+<trans-unit id="sf6e1665c7022a1f8">
+  <source>Password</source>
+  <target>Kata Sandi</target>
+</trans-unit>
+<trans-unit id="scad07cc65ad2fb30">
+  <source>Don't have an account?</source>
+  <target>Belum memiliki akun</target>
+</trans-unit>
+<trans-unit id="s5e6b698a2ec87331">
+  <source>Sign up</source>
+  <target>Daftar</target>
+</trans-unit>
+<trans-unit id="scb04435672ac5410">
+  <source>Log in</source>
+  <target>Masuk</target>
+</trans-unit>
+<trans-unit id="sc68a41f54a2af45a">
+  <source>Firstname</source>
+  <target>Nama Depan</target>
+</trans-unit>
+<trans-unit id="s25a24c4bb22a0792">
+  <source>Lastname</source>
+  <target>Nama Belakang</target>
+</trans-unit>
+<trans-unit id="s92d3208e5c2dec4f">
+  <source>Password (at least 8 characters)</source>
+  <target>Kata Sandi (minimal 8 karakter)</target>
+</trans-unit>
+<trans-unit id="s3dab6bcbc22dc3e0">
+  <source>Confirm Password</source>
+  <target>Konfirmasi Kata Sandi</target>
+</trans-unit>
+<trans-unit id="s374b7ba47861c79a">
+  <source>Have an account?</source>
+  <target>Sudah memiliki akun?</target>
+</trans-unit>
+<trans-unit id="s497c1019cdbf2de2">
+  <source>Hi,</source>
+  <target>Hai,</target>
+</trans-unit>
+<trans-unit id="sd4e078764724264a">
+  <source>Search for a location...</source>
+  <target>Cari lokasi...</target>
+</trans-unit>
+<trans-unit id="sb8d5898f07eeca5d">
+  <source>Please choose image.</source>
+  <target>Silakan pilih gambar.</target>
+</trans-unit>
+<trans-unit id="sb2ee6b31b4a3ea2b">
+  <source>Add more description here...</source>
+  <target>Tulis keterangan disini...</target>
+</trans-unit>
+<trans-unit id="s89ca85dfc4c87805">
+  <source>Choose Image (Max Size 1MB)</source>
+  <target>Pilih Gambar (Ukuran Maksimal 1MB)</target>
+</trans-unit>
+<trans-unit id="s16682603b202def0">
+  <source>Max size is 1MB.</source>
+  <target>Ukuran Maksimal 1MB.</target>
 </trans-unit>
 </body>
 </file>

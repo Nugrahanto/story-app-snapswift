@@ -22,8 +22,9 @@ class TextareaWithValidation extends LitWithoutShadowDom {
     return html`
       <div class="mb-3">
         <label for="descriptionStory">${msg(`Description:`)}</label>
-        <textarea class="form-control" id=${this.inputId} name="${this.inputName}" rows="${this.rows}" required></textarea>
-        <div class="invalid-feedback">Please fill in.</div>
+        <textarea class="form-control" id=${this.inputId} name="${this.inputName}" rows="${this.rows}" 
+        placeholder="${msg(`Add more description here...`)}" required></textarea>
+        <div class="invalid-feedback">${msg(`Please fill in correctly.`)}</div>
       </div>
     `;
   }

@@ -37,6 +37,7 @@ class FooterApp extends LitElement {
     display: flex;
     align-items: center;    
     font-size: smaller;
+    flex-wrap: wrap;
   }
 
   .select-locale {
@@ -66,7 +67,7 @@ class FooterApp extends LitElement {
     return html`
       <p class="about-title">${msg(`About Snapswift`)}</p>
       <p class="about-description">
-        ${msg(`Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.`)}
+        ${msg(`Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, Snapswift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.`)}
       </p>
       <div class="about-text">
         <p>© 2024 <a href="https://github.com/Nugrahanto/story-app-snapswift" target="_blank">Snapswift - Nugrahanto</a></p>

@@ -60,6 +60,18 @@ module.exports = {
       template: path.resolve(__dirname, 'src/views/addstory.html'),
       ...htmlWebpackPluginConfig,
     }),
+    new HtmlWebpackPlugin({
+      title: 'Register',
+      filename: 'accounts/register.html',
+      template: path.resolve(__dirname, 'src/views/accounts/register.html'),
+      ...htmlWebpackPluginConfig,
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Login',
+      filename: 'accounts/login.html',
+      template: path.resolve(__dirname, 'src/views/accounts/login.html'),
+      ...htmlWebpackPluginConfig,
+    }),
 
     new CleanWebpackPlugin(),
   ],
