@@ -86,7 +86,7 @@ class InputImagePreview extends LitElement {
         </div>
       </div>
 
-      <div class="invalid-feedback">Please choose image.</div>
+      <div class="invalid-feedback">${msg(`Please choose image.`)}</div>
     `;
   }
  

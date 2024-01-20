@@ -142,6 +142,18 @@
   <source>Hi,</source>
   <target>Hai,</target>
 </trans-unit>
+<trans-unit id="sd4e078764724264a">
+  <source>Search for a location...</source>
+  <target>Cari lokasi...</target>
+</trans-unit>
+<trans-unit id="sb8d5898f07eeca5d">
+  <source>Please choose image.</source>
+  <target>Silakan pilih gambar.</target>
+</trans-unit>
+<trans-unit id="sb2ee6b31b4a3ea2b">
+  <source>Add more description here...</source>
+  <target>Tulis keterangan disini...</target>
+</trans-unit>
 </body>
 </file>
 </xliff>

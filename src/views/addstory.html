@@ -22,12 +22,18 @@
                   inputId="imageStory"
                   inputName="imageStory"
                   class="container-fluid text-center" 
-                  required></input-image-preview>                
+                  required></input-image-preview>
                 <div class="container-fluid">
+                  <input-with-validation
+                    type="text"
+                    inputId="addressInput"
+                    icon="bi-geo-alt-fill"
+                    classes="mb-3 input-group"
+                  ></input-with-validation>
                   <textarea-with-validation
                     inputId="descriptionStory"
                     inputName="descriptionStory"
-                    rows="3"
+                    rows="4"
                     required
                   ></textarea-with-validation>
                   <button-post></button-post>

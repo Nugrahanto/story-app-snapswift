@@ -1,17 +1,40 @@
 import '../components/form/InputImagePreview';
 import CheckUserAuth from './accounts/check-user-auth';
+import Geocode from '../network/geocode';
 
 const AddStory = {
   inputImagePreview: null,
+  lat: null,
+  lng: null,
  
   async init() {
     CheckUserAuth.checkLoginState();
+    await this._loadGoogleMapsApi();
     this._initialUI();
     this._initialListener();
   },
 
   _initialUI() {
     this.inputImagePreview = document.querySelector('input-image-preview');
+
+    if (typeof google !== 'undefined' && google.maps) {      
+      const addressInput = document.getElementById('addressInput');
+      const autocomplete = new google.maps.places.Autocomplete(addressInput);
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (!place.geometry) {
+            console.error('Place has no geometry');
+            return;
+        }
+
+        const { lat, lng } = place.geometry.location;
+        
+        this.lat = lat();
+        this.lng = lng();
+      });
+    } else {
+      console.error('Google Maps API is not available');
+    }
   },
 
   _initialListener() {
@@ -30,6 +53,18 @@ const AddStory = {
     );
   },
 
+  async _loadGoogleMapsApi() {
+    try {
+      const response = await Geocode.getLoadGoogleMapsApi();
+      const scriptText = response.data;
+      const scriptElement = document.createElement('script');
+      scriptElement.innerHTML = scriptText;
+      document.body.appendChild(scriptElement);
+    } catch (error) {
+      console.error('Failed to load Google Maps API:', error);
+    }    
+  },
+
   _sendPost() {
     const formData = this._getFormData();
  
@@ -44,7 +79,6 @@ const AddStory = {
   _getFormData() {
     const imageStoryInput = this.inputImagePreview.shadowRoot.querySelector('#imageStory');
     const descStoryInput = document.querySelector('#descriptionStory');
-    const user = document.querySelector('#username');
 
     const currentTime = new Date();
     const isoFormattedTime = currentTime.toISOString();
@@ -55,10 +89,10 @@ const AddStory = {
     }
     
     return {
-      name: user.innerText,
       description: descStoryInput.value,
       photoUrl: imageStoryInput.files[0],
-      createdAt: timeStoryInput,
+      lat: this.lat,
+      lon: this.lng,
     };
   },
 

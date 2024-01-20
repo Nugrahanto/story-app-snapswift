@@ -34,7 +34,7 @@ class InputWithValidation extends LitWithoutShadowDom {
         id=${this.inputId || nothing}
         class="form-control"
         type=${this.type}
-        placeholder=${this.placeholder}
+        placeholder=${this.inputId === 'addressInput' ? msg(`Search for a location...`) : this.placeholder}
         value=${this.value || nothing}
         ?required=${this.required}
         @input=${(e) => (this.value = e.target.value)}
