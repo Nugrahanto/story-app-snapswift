@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
+import LitWithoutShadowDom from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class ButtonPost extends LitWithoutShadowDom {

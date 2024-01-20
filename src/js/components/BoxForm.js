@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import LitWithoutShadowDom from "./base/LitWithoutShadowDom";
+import LitWithoutShadowDom from './base/LitWithoutShadowDom';
 import { msg, updateWhenLocaleChanges } from '@lit/localize';
 
 class BoxForm extends LitWithoutShadowDom {
@@ -38,7 +38,7 @@ class BoxForm extends LitWithoutShadowDom {
         <div class="text-end">
           <button type="submit" id="btnLogin" class="btn btn-base rounded-pill">${msg(`Log in`)}</button>
         </div>
-      </form>`
+      </form>`;
     } else {
       content = html `
       <form id="registerForm" novalidate>
@@ -95,7 +95,7 @@ class BoxForm extends LitWithoutShadowDom {
           <button type="submit" id="btnRegister" class="btn btn-base rounded-pill">${msg(`Sign up`)}</button>
         </div>
       </form>
-      `
+      `;
     }
     return html`
       <div class="border border-1 py-4">

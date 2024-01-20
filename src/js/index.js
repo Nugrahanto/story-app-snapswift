@@ -22,11 +22,11 @@ const routes = {
 const detectRoute = () => routes[window.location.pathname];
  
 const initPages = () => {
-  const SnapSwift = document.querySelector(".toggle-btn");
+  const SnapSwift = document.querySelector('.toggle-btn');
 
   if (SnapSwift) {
-    SnapSwift.addEventListener("click", function () {
-      document.querySelector("#sidebar").classList.toggle("collapse");
+    SnapSwift.addEventListener('click', function () {
+      document.querySelector('#sidebar').classList.toggle('collapse');
     });
   }
 };

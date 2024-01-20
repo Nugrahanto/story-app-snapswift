@@ -57,19 +57,19 @@ const Register = {
     const btnRegister = document.querySelector('#btnRegister');
 
     if (passwordValue.length >= 8) {
-      lengthMessage.classList.replace("d-block","d-none");
+      lengthMessage.classList.replace('d-block','d-none');
     } else {      
       lengthMessage.textContent = 'Password must be at least 8 characters';
-      lengthMessage.classList.replace("d-none","d-block");
+      lengthMessage.classList.replace('d-none','d-block');
     }
     
     if (rePasswordValue !== "") {
       if (passwordValue === rePasswordValue) {
         matchMessage.textContent = 'Passwords match!';
-        matchMessage.classList.replace("d-block","d-none");
+        matchMessage.classList.replace('d-block','d-none');
       } else {
         matchMessage.textContent = 'Passwords do not match.';
-        matchMessage.classList.replace("d-none","d-block");
+        matchMessage.classList.replace('d-none','d-block');
       }
     }
 
@@ -91,7 +91,7 @@ const Register = {
       console.log(formData);
       
       try {
-        const response = await Auth.register({
+        await Auth.register({
           name: formData.name,
           email: formData.email,
           password: formData.password,
@@ -138,14 +138,14 @@ const Register = {
     
     setTimeout(() => {
       toastContainer.remove();
-      if (status === "success") {        
+      if (status === 'success') {        
         this._goToLoginPage();
       }
     }, 3000);
   },
 
   _goToLoginPage() {
-    window.location.href = '/accounts/login.html'
+    window.location.href = '/accounts/login.html';
   }
 };
  

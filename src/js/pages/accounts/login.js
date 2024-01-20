@@ -107,7 +107,7 @@ const Login = {
     
     setTimeout(() => {
       toastContainer.remove();
-      if (status === "success") {        
+      if (status === 'success') {        
         this._goToDashboardPage();
       }
     }, 3000);

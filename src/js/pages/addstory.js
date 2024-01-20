@@ -19,7 +19,7 @@ const AddStory = {
   _initialUI() {
     this.inputImagePreview = document.querySelector('input-image-preview');
 
-    if (typeof google !== 'undefined' && google.maps) {      
+    if (typeof google !== 'undefined' && google.maps) {
       const addressInput = document.getElementById('addressInput');
       const autocomplete = new google.maps.places.Autocomplete(addressInput);
       autocomplete.addListener('place_changed', () => {
@@ -78,7 +78,7 @@ const AddStory = {
         console.log(formData);
   
         try {
-          const response = await Stories.postStories(formData);
+          await Stories.postStories(formData);
           const toastReturn = Utils.setToast('Story upload successfully!', 'success');
           this._toastTimeOut(toastReturn);
         } catch (error) {
@@ -102,17 +102,13 @@ const AddStory = {
     const imageStoryInput = this.inputImagePreview.shadowRoot.querySelector('#imageStory');
     const descStoryInput = document.querySelector('#descriptionStory');
 
-    const currentTime = new Date();
-    const isoFormattedTime = currentTime.toISOString();
-    const timeStoryInput = isoFormattedTime;
-
     if (!imageStoryInput.files[0]) {
-      this._validateFormDataImage("Empty");
+      this._validateFormDataImage('Empty');
     } else {
-      var fileSize = imageStoryInput.files[0].size; // Ukuran file dalam byte
-      var maxSize = 1024 * 1024;
+      const fileSize = imageStoryInput.files[0].size; // Ukuran file dalam byte
+      const maxSize = 1024 * 1024;
       if (fileSize > maxSize) {
-        this._validateFormDataImage("Big");
+        this._validateFormDataImage('Big');
       } else {
         return {
           description: descStoryInput.value,
@@ -148,7 +144,7 @@ const AddStory = {
     
     setTimeout(() => {
       toastContainer.remove();
-      if (status === "success") {        
+      if (status === 'success') {        
         this._goToDashboardPage();
       }
     }, 3000);

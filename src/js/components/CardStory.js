@@ -127,9 +127,9 @@ class CardStory extends LitWithoutShadowDom {
   _setLocation(results) {
     if (results.length > 0) {
       const geocodeResult = results[0].formatted_address;
-      const address_parts = geocodeResult.split(", ");
-      const city = address_parts[address_parts.length - 3];
-      const country = address_parts[address_parts.length - 1];
+      const addressParts = geocodeResult.split(", ");
+      const city = addressParts[addressParts.length - 3];
+      const country = addressParts[addressParts.length - 1];
       this.formattedAddress = `${city}, ${country}`;
     }
   }
