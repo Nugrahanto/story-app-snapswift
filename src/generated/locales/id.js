@@ -11,6 +11,7 @@
     export const templates = {
       's0c44e47080f0ceb5': `Snapswift adalah aplikasi yang dirancang untuk menyediakan pengguna dengan platform menarik untuk membuat, berbagi, dan menjelajahi cerita. Baik melalui gambar dan deskripsi yang menarik, Snapswift bertujuan untuk membangun ruang kreatif di mana pengguna dapat berekspresi dan terhubung dengan komunitas penggagas cerita visual.`,
 's1474edbc3eeaca03': `detik yang lalu`,
+'s16682603b202def0': `Ukuran Maksimal 1MB.`,
 's18c61ee29243b363': `hari lalu`,
 's1f30f2eaf1e38fb9': `Tambahkan Cerita`,
 's25a24c4bb22a0792': `Nama Belakang`,
@@ -19,7 +20,6 @@
 's374b7ba47861c79a': `Sudah memiliki akun?`,
 's37a9e8aec5713460': `Lainnya`,
 's3dab6bcbc22dc3e0': `Konfirmasi Kata Sandi`,
-'s3f3f14b96f7f713d': `Pilih Gambar`,
 's497c1019cdbf2de2': `Hai,`,
 's4c0be30854a3beb7': `menit yang lalu`,
 's59675d3bb2b7b629': `Deskripsi:`,
@@ -31,6 +31,7 @@
 's6abb1cd87fe0114e': `Beranda`,
 's71bfb53addfbfd9d': `Bantuan`,
 's78d8c6dde43e9cf9': `Tentang Snapswift`,
+'s89ca85dfc4c87805': `Pilih Gambar (Ukuran Maksimal 1MB)`,
 's92d3208e5c2dec4f': `Kata Sandi (minimal 8 karakter)`,
 's9d8b8aa2b404c2c8': `Pengaturan`,
 'sb061ff5a347a296e': `Profil`,

@@ -15,6 +15,15 @@ const Stories = {
       },
     });
   },
+
+  async postStories(data) {
+    return await axios.post(ApiEndpoint.POST_STORIES, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        Authorization: `Bearer ${Utils.getUserSession(Config.USER_TOKEN_KEY)}`,
+      },
+    });
+  },
 };
  
 export default Stories;

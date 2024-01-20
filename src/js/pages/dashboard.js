@@ -30,7 +30,7 @@ const Dashboard = {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       const clientHeight = document.documentElement.clientHeight;
 
-      if (scrollTop + clientHeight >= scrollHeight - 100 && !this.loading) {
+      if (scrollTop + clientHeight >= scrollHeight - 500 && !this.loading) {
         this._loadMoreData();
       }
     });
@@ -65,10 +65,6 @@ const Dashboard = {
   },
 
   _createCardElements(story) {
-    const maxLength = 100;
-    const truncatedDescription = story.description.length > maxLength
-      ? `${story.description.slice(0, maxLength)}...`
-      : story.description;
     return `
     <div class="col-lg-12 col-md-12 col-sm-12 mx-auto mb-3">
       <div class="container pl-5 pr-5">
@@ -77,7 +73,7 @@ const Dashboard = {
             name="${story.name}"
             photoUrl="${story.photoUrl}"            
             location="${story.lat}, ${story.lon}"
-            description="${truncatedDescription}"
+            description="${story.description}"
             createdAt="${story.createdAt}"
         ></card-story>
       </div>

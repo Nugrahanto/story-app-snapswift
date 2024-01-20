@@ -1,6 +1,8 @@
 import '../components/form/InputImagePreview';
 import CheckUserAuth from './accounts/check-user-auth';
 import Geocode from '../network/geocode';
+import Stories from '../network/stories';
+import Utils from '../utils/utils';
 
 const AddStory = {
   inputImagePreview: null,
@@ -65,13 +67,32 @@ const AddStory = {
     }    
   },
 
-  _sendPost() {
+  async _sendPost() {
     const formData = this._getFormData();
+    const btnPost = document.querySelector('#postStory');
  
     if (this._validateFormData({ ...formData })) {
+      btnPost.disabled = true;
       console.log('formData');
       console.log(formData);
-  
+
+      try {
+        const response = await Stories.postStories(formData);
+        const toastReturn = Utils.setToast('Story upload successfully!', 'success');
+        this._toastTimeOut(toastReturn);
+      } catch (error) {
+        console.error(error);
+        btnPost.disabled = false;
+        if (error.response && error.response.data) {
+          const errorMessage = error.response.data.message || 'An unknown error occurred.';
+          const toastReturn = Utils.setToast(`Error: ${errorMessage}`, 'error');
+          this._toastTimeOut(toastReturn);
+        } else {
+          console.error(error);
+          const toastReturn = Utils.setToast('An unexpected error occurred. Please try again.', 'error');
+          this._toastTimeOut(toastReturn);
+        }
+      }  
       // this._goToDashboardPage();
     }
   },
@@ -85,15 +106,21 @@ const AddStory = {
     const timeStoryInput = isoFormattedTime;
 
     if (!imageStoryInput.files[0]) {
-      this._validateFormDataImage();
+      this._validateFormDataImage("Empty");
+    } else {
+      var fileSize = imageStoryInput.files[0].size; // Ukuran file dalam byte
+      var maxSize = 1024 * 1024;
+      if (fileSize > maxSize) {
+        this._validateFormDataImage("Big");
+      } else {
+        return {
+          description: descStoryInput.value,
+          photo: imageStoryInput.files[0],
+          lat: this.lat,
+          lon: this.lng,
+        };
+      }
     }
-    
-    return {
-      description: descStoryInput.value,
-      photoUrl: imageStoryInput.files[0],
-      lat: this.lat,
-      lon: this.lng,
-    };
   },
 
   _validateFormData(formData) {
@@ -101,11 +128,29 @@ const AddStory = {
     return formDataFiltered.length === 0;
   },
 
-  _validateFormDataImage() {
+  _validateFormDataImage(Status) {
     const containerImageStoryInput = this.inputImagePreview.shadowRoot.querySelector('.custom-file');
-    const textValidateImageStoryInput = this.inputImagePreview.shadowRoot.querySelector('.invalid-feedback');
+    const textValidateImageStoryInputEmpty = this.inputImagePreview.shadowRoot.querySelector('.invalid-feedback-empty');
+    const textValidateImageStoryInputBig = this.inputImagePreview.shadowRoot.querySelector('.invalid-feedback-big');
+    
     containerImageStoryInput.style.border = '2px dashed #dc3545';
-    textValidateImageStoryInput.style.display = 'block';
+
+    if (Status === 'Empty') {
+      textValidateImageStoryInputEmpty.style.display = 'block';
+    } else if (Status === 'Big') {
+      textValidateImageStoryInputBig.style.display = 'block';
+    }
+  },
+
+  _toastTimeOut(status) {
+    const toastContainer = document.querySelector('#toastContainer').firstChild;
+    
+    setTimeout(() => {
+      toastContainer.remove();
+      if (status === "success") {        
+        this._goToDashboardPage();
+      }
+    }, 3000);
   },
  
   _goToDashboardPage() {

@@ -37,6 +37,7 @@ class FooterApp extends LitElement {
     display: flex;
     align-items: center;    
     font-size: smaller;
+    flex-wrap: wrap;
   }
 
   .select-locale {

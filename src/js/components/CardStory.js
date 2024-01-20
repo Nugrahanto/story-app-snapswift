@@ -25,15 +25,17 @@ class CardStory extends LitWithoutShadowDom {
     this.createdAt = '';
     this.location = '';
     this.formattedAddress = '';
+    this.truncatedDescription = '';
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.loadData();
+    this._loadDataLocation();
+    this._initialData();
   }
 
-  async loadData() {
-    if (this.location !== "") {
+  async _loadDataLocation() {
+    if (this.location !== "null, null") {
       const locationUser = this.location.split(', ');
       const lat = parseFloat(locationUser[0]);
       const lon = parseFloat(locationUser[1]);
@@ -49,6 +51,13 @@ class CardStory extends LitWithoutShadowDom {
     }
     this.requestUpdate();
   }
+
+  _initialData() {
+    const maxLength = 200;
+    this.truncatedDescription = this.description.length > maxLength
+      ? `${this.description.slice(0, maxLength)}...`
+      : this.description;
+  }
  
   render() {
     return html`
@@ -60,22 +69,40 @@ class CardStory extends LitWithoutShadowDom {
             src="https://ui-avatars.com/api/?background=random&size=32&name=${this.name}"
             alt="User Name"
           />
-          <span class="fw-bold ms-3">${this.name}</span>
-          <div class="ms-auto">
-            <span class="text-muted fs-6 mt-0"><small>${this.formattedAddress}</small></span>
+          <div class="row w-100">
+            <div class="col-lg-5 col-md-12 ps-4">
+              <span class="fw-bold">${this.name}</span>
+            </div>
+            <div class="col-lg-7 col-md-12 ps-4 ${this._isLargeScreen() ? 'text-end' : 'text-left'} ${!this.formattedAddress ? 'd-none' : ''}">
+              <span class="text-muted fs-6 mt-0"><small>${this.formattedAddress}</small></span>
+            </div>
           </div>
         </div>
         <img src="${this.photoUrl}" alt="Story Image">
         <div class="card-body">
-          <span class="card-title">${this.name}</span>
-          <span class="card-text lh-sm fw-light">${this.description}</span>
+          <span class="card-title fw-bold">${this.name}</span>
+          <span id="textDesc" class="card-text lh-sm fw-light">
+          ${this.truncatedDescription}
+          ${this.description.length > 200 && this.truncatedDescription.length < this.description.length
+            ? html`
+              <span              
+                id="seeMore"
+                class="fw-bold"
+                role="button"
+                @click="${this._toggleDescription}"
+              >
+                See more
+              </span>`
+            : ''}
+          </span>
+          <span id="seeMore" class="fw-bold d-none">see more</span>
           <div class="d-flex align-items-center justify-content-between">
-            <div class="">
+            <div>
               <p class="card-text">
                 <small class="text-muted">${Utils.setFormatCreatedAt(this.createdAt)}</small>
               </p>
             </div>
-            <div class="">
+            <div>
               <button class="btn btn-sm btn-outline-base rounded-pill">
                 <i class="bi bi-heart-fill"></i>
               </button>
@@ -84,6 +111,17 @@ class CardStory extends LitWithoutShadowDom {
         </div>
       </div>
     `;
+  }
+
+  _toggleDescription() {
+    this.truncatedDescription = this.truncatedDescription === this.description
+    ? `${this.description.slice(0, 200)}...`
+    : this.description;
+    this.requestUpdate();
+  }
+
+  _isLargeScreen() {
+    return window.innerWidth >= 992;
   }
 
   _setLocation(results) {
