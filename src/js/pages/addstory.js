@@ -70,31 +70,32 @@ const AddStory = {
   async _sendPost() {
     const formData = this._getFormData();
     const btnPost = document.querySelector('#postStory');
- 
-    if (this._validateFormData({ ...formData })) {
-      btnPost.disabled = true;
-      console.log('formData');
-      console.log(formData);
 
-      try {
-        const response = await Stories.postStories(formData);
-        const toastReturn = Utils.setToast('Story upload successfully!', 'success');
-        this._toastTimeOut(toastReturn);
-      } catch (error) {
-        console.error(error);
-        btnPost.disabled = false;
-        if (error.response && error.response.data) {
-          const errorMessage = error.response.data.message || 'An unknown error occurred.';
-          const toastReturn = Utils.setToast(`Error: ${errorMessage}`, 'error');
+    if (formData) {
+      if (this._validateFormData({ ...formData })) {
+        btnPost.disabled = true;
+        console.log('formData');
+        console.log(formData);
+  
+        try {
+          const response = await Stories.postStories(formData);
+          const toastReturn = Utils.setToast('Story upload successfully!', 'success');
           this._toastTimeOut(toastReturn);
-        } else {
+        } catch (error) {
           console.error(error);
-          const toastReturn = Utils.setToast('An unexpected error occurred. Please try again.', 'error');
-          this._toastTimeOut(toastReturn);
+          btnPost.disabled = false;
+          if (error.response && error.response.data) {
+            const errorMessage = error.response.data.message || 'An unknown error occurred.';
+            const toastReturn = Utils.setToast(`Error: ${errorMessage}`, 'error');
+            this._toastTimeOut(toastReturn);
+          } else {
+            console.error(error);
+            const toastReturn = Utils.setToast('An unexpected error occurred. Please try again.', 'error');
+            this._toastTimeOut(toastReturn);
+          }
         }
-      }  
-      // this._goToDashboardPage();
-    }
+      }
+    }    
   },
 
   _getFormData() {

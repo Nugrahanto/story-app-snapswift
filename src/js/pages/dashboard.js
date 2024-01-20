@@ -39,12 +39,10 @@ const Dashboard = {
   async _loadMoreData() {
     try {
       this.loading = true;
-      const nextPage = this.pageSize + 5;
-      const response = await Stories.getAll(this.currentPage, nextPage);
+      const response = await Stories.getAll(this.currentPage, this.pageSize);
       const responseRecords = response.data.listStory;
 
       if (responseRecords.length > 0) {
-        this.pageSize = nextPage;
         this._createStoryCards(responseRecords);
       }
     } catch (error) {
@@ -57,11 +55,10 @@ const Dashboard = {
   _createStoryCards(listStory = null) {
     const cardContainer = document.getElementById('card-container');
 
-    cardContainer.innerHTML = '';
-
     listStory.forEach(story => {
-      cardContainer.innerHTML += this._createCardElements(story);
+      cardContainer.insertAdjacentHTML('beforeend', this._createCardElements(story));
     });
+    this.currentPage = this.currentPage + 1;
   },
 
   _createCardElements(story) {
