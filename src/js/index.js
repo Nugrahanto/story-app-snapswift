@@ -11,6 +11,8 @@ import Register from './pages/accounts/register';
 import Login from './pages/accounts/login';
 import * as bootstrap from 'bootstrap';
 
+import './utils/firebase';
+
 const routes = {
   '/': Dashboard,  
   '/addstory.html': AddStory,

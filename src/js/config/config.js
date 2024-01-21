@@ -5,7 +5,7 @@ const Config = {
   USER_TOKEN_KEY: 'token',
 
   BASE_URL_MAPS: 'https://maps.googleapis.com/maps/api',
-  GO_API_KEY: '',
+  GO_API_KEY: process.env.GO_API_KEY,
 };
  
 export default Config;
