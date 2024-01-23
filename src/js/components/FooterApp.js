@@ -20,7 +20,7 @@ class FooterApp extends LitElement {
   }
 
   a:hover {
-    color: #ffc0cb;
+    color: #6c757d;
   }
 
   .about-title {
@@ -70,7 +70,9 @@ class FooterApp extends LitElement {
         ${msg(`Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, Snapswift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.`)}
       </p>
       <div class="about-text">
-        <p>© 2024 <a href="https://github.com/Nugrahanto/story-app-snapswift" target="_blank">Snapswift - Nugrahanto</a></p>
+        <p>© 2024 Snapswift</p>
+        <span>•</span>
+        <p><a href="https://github.com/Nugrahanto" target="_blank">Nugrahanto</a></p>
         <span>•</span>
         <locale-picker class="d-block mb-3"></locale-picker>
       </div>

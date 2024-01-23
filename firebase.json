@@ -6,6 +6,23 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/path/to/api/**",
+        "function": "apiFunction"
+      }
+    ],
+    "headers": [
+      {
+        "source": "/path/to/api/**",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
     ]
   }
 }
