@@ -1,8 +1,9 @@
 # Snapswift
 
-Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, SnapSwift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.
+Snapswift is an application designed to provide users with an engaging platform for creating, sharing, and exploring stories. Whether it's through captivating images and descriptions, Snapswift aims to foster a creative space where users can express themselves and connect with a community of visual storytellers.
 
-![Snapswift on Mobile](https://github.com/Nugrahanto/story-app-snapswift/assets/21310195/ad3da034-6f10-4735-8692-c795af62cde9)
+![snapswift2](https://github.com/Nugrahanto/story-app-snapswift/assets/21310195/096c2512-934f-4549-a018-a41b1fc51368)
+
 
 ## Getting Started
 
